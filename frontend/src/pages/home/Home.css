@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* Estilos para el contenedor principal de la página */
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Estilos para el contenedor de tarjetas */
+.card-container {
+  width: 100%;
+  max-width: 1000px;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el título */
+.home-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Estilos para el grid de tarjetas */
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+/* Estilos de la tarjeta individual */
+.home-card {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 25px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Contenedor del ícono */
+.icon-wrapper {
+  margin-bottom: 15px;
+}
+
+/* Estilos para el título y descripción dentro de la tarjeta */
+.card-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #4a4a4a;
+  margin-bottom: 10px;
+}
+
+.card-description {
+  font-size: 1rem;
+  color: #777;
+  line-height: 1.5;
+}
+
+/* Estilos de íconos específicos */
+.icon-blue { color: #667eea; }
+.icon-green { color: #28a745; }
+.icon-purple { color: #8a2be2; }
+.icon-orange { color: #ff8c00; }
+
+/* Estilos para el nuevo encabezado con el botón */
+.header-with-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* Estilos para el nuevo botón de historial */
+.history-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #ffc107;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(255, 193, 7, 0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.history-button:hover {
+  background-color: #e0a800;
+  transform: translateY(-2px);
+}
+
+.button-icon {
+  font-size: 1.2rem;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .home-title {
+    font-size: 2rem;
+    text-align: center;
+  }
+  .header-with-button {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
