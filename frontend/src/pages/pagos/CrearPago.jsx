@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import './Pagos.css';
 
 export default function CrearPago() {
+  const API_URL = process.env.REACT_APP_API_URL;
   const navigate = useNavigate();
   const location = useLocation();
   const [formData, setFormData] = useState({
@@ -31,10 +32,10 @@ export default function CrearPago() {
       try {
         const [reservasRes, clientesRes, habitacionesRes] = await Promise.all([
           location.state && location.state.reservaId
-            ? axios.get(`http://127.0.0.1:8000/api/reservas/${location.state.reservaId}/`, { headers: { 'Authorization': `Token ${token}` } })
-            : axios.get("http://127.0.0.1:8000/api/reservas/?pago__isnull=true", { headers: { 'Authorization': `Token ${token}` } }),
-          axios.get("http://127.0.0.1:8000/api/clientes/", { headers: { 'Authorization': `Token ${token}` } }),
-          axios.get("http://127.0.0.1:8000/api/habitaciones/", { headers: { 'Authorization': `Token ${token}` } })
+            ? axios.get(`${API_URL}/reservas/${location.state.reservaId}/`, { headers: { 'Authorization': `Token ${token}` } })
+            : axios.get(`${API_URL}/reservas/?pago__isnull=true`, { headers: { 'Authorization': `Token ${token}` } }),
+          axios.get(`${API_URL}/clientes/`, { headers: { 'Authorization': `Token ${token}` } }),
+          axios.get(`${API_URL}/habitaciones/`, { headers: { 'Authorization': `Token ${token}` } })
         ]);
 
         const clientesMap = clientesRes.data.reduce((acc, cliente) => {
@@ -124,14 +125,14 @@ export default function CrearPago() {
     }
 
     try {
-      await axios.post("http://127.0.0.1:8000/api/pagos/", formData, {
+      await axios.post(`${API_URL}/pagos/`, formData, {
         headers: {
           'Authorization': `Token ${token}`
         }
       });
       setSuccess("Pago creado exitosamente.");
       setTimeout(() => {
-        navigate('/pagos');
+        navigate(`${API_URL}/pagos`);
       }, 1500);
     } catch (err) {
       console.error("Error al crear el pago:", err.response ? err.response.data : err.message);
@@ -233,7 +234,7 @@ export default function CrearPago() {
           </div>
           <button type="submit" className="submit-button">Crear Pago</button>
         </form>
-        <button onClick={() => navigate('/pagos')} className="back-button">
+        <button onClick={() => navigate(`${API_URL}/pagos`)} className="back-button">
           Cancelar
         </button>
       </div>

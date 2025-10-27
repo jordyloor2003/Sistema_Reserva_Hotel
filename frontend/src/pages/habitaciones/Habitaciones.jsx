@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import './Habitaciones.css';
 
 export default function Habitaciones() {
+  const API_URL = process.env.REACT_APP_API_URL;
   const [habitaciones, setHabitaciones] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -24,7 +25,7 @@ export default function Habitaciones() {
     }
 
     try {
-      const response = await axios.get("http://127.0.0.1:8000/api/habitaciones/", {
+      const response = await axios.get(`${API_URL}/habitaciones/`, {
         headers: {
           'Authorization': `Token ${token}`
         }
@@ -59,7 +60,7 @@ export default function Habitaciones() {
 
     try {
       const response = await axios.get(
-        `http://127.0.0.1:8000/api/habitaciones/disponibles/?fecha_inicio=${fechaInicio}&fecha_fin=${fechaFin}`,
+        `${API_URL}/habitaciones/disponibles/?fecha_inicio=${fechaInicio}&fecha_fin=${fechaFin}`,
         {
           headers: {
             'Authorization': `Token ${token}`
@@ -81,11 +82,11 @@ export default function Habitaciones() {
   }, []);
 
   const handleCreateRoom = () => {
-    navigate('/crear-habitacion');
+    navigate(`${API_URL}/crear-habitacion`);
   };
 
   const handleEditRoom = (id) => {
-    navigate(`/editar-habitacion/${id}`);
+    navigate(`${API_URL}/editar-habitacion/${id}`);
   };
 
   const handleDeleteRoom = async () => {
@@ -96,7 +97,7 @@ export default function Habitaciones() {
     }
 
     try {
-      await axios.delete(`http://127.0.0.1:8000/api/habitaciones/${habitacionToDelete}/`, {
+      await axios.delete(`${API_URL}/habitaciones/${habitacionToDelete}/`, {
         headers: {
           'Authorization': `Token ${token}`
         }

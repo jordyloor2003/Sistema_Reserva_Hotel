@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import './Reservas.css';
 
 export default function EditarReserva() {
+  const API_URL = process.env.REACT_APP_API_URL;
   const { id } = useParams();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -29,9 +30,9 @@ export default function EditarReserva() {
       }
       try {
         const [reservaResponse, clientesResponse, habitacionesResponse] = await Promise.all([
-          axios.get(`http://127.0.0.1:8000/api/reservas/${id}/`, { headers: { 'Authorization': `Token ${token}` } }),
-          axios.get("http://127.0.0.1:8000/api/clientes/", { headers: { 'Authorization': `Token ${token}` } }),
-          axios.get("http://127.0.0.1:8000/api/habitaciones/", { headers: { 'Authorization': `Token ${token}` } }),
+          axios.get(`${API_URL}/reservas/${id}/`, { headers: { 'Authorization': `Token ${token}` } }),
+          axios.get(`${API_URL}/clientes/`, { headers: { 'Authorization': `Token ${token}` } }),
+          axios.get(`${API_URL}/habitaciones/`, { headers: { 'Authorization': `Token ${token}` } }),
         ]);
 
         const reservaData = reservaResponse.data;
@@ -74,14 +75,14 @@ export default function EditarReserva() {
     }
 
     try {
-      await axios.put(`http://127.0.0.1:8000/api/reservas/${id}/`, formData, {
+      await axios.put(`${API_URL}/reservas/${id}/`, formData, {
         headers: {
           'Authorization': `Token ${token}`
         }
       });
       setSuccess("Reserva actualizada exitosamente.");
       setTimeout(() => {
-        navigate('/reservas');
+        navigate(`${API_URL}/reservas`);
       }, 1500);
     } catch (err) {
       console.error("Error al actualizar la reserva:", err.response ? err.response.data : err.message);
@@ -107,7 +108,7 @@ export default function EditarReserva() {
       <div className="editar-reserva-container">
         <div className="error-card">
           <p className="error-text">{error}</p>
-          <button onClick={() => navigate('/reservas')} className="back-button">Volver</button>
+          <button onClick={() => navigate(`${API_URL}/reservas`)} className="back-button">Volver</button>
         </div>
       </div>
     );
@@ -191,7 +192,7 @@ export default function EditarReserva() {
           </div>
           <button type="submit" className="submit-button">Guardar Cambios</button>
         </form>
-        <button onClick={() => navigate('/reservas')} className="back-button">
+        <button onClick={() => navigate(`${API_URL}/reservas`)} className="back-button">
           Cancelar
         </button>
       </div>

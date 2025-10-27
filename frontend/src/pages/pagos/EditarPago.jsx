@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import './Pagos.css';
 
 export default function EditarPago() {
+  const API_URL = process.env.REACT_APP_API_URL;
   const { id } = useParams();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -27,7 +28,7 @@ export default function EditarPago() {
         return;
       }
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/pagos/${id}/`, {
+        const response = await axios.get(`${API_URL}/pagos/${id}/`, {
           headers: { 'Authorization': `Token ${token}` }
         });
         const pagoData = response.data;
@@ -69,14 +70,14 @@ export default function EditarPago() {
     }
 
     try {
-      await axios.put(`http://127.0.0.1:8000/api/pagos/${id}/`, formData, {
+      await axios.put(`${API_URL}/pagos/${id}/`, formData, {
         headers: {
           'Authorization': `Token ${token}`
         }
       });
       setSuccess("Pago actualizado exitosamente.");
       setTimeout(() => {
-        navigate('/pagos');
+        navigate(`${API_URL}/pagos`);
       }, 1500);
     } catch (err) {
       console.error("Error al actualizar el pago:", err.response ? err.response.data : err.message);
@@ -102,7 +103,7 @@ export default function EditarPago() {
       <div className="editar-pago-container">
         <div className="error-card">
           <p className="error-text">{error}</p>
-          <button onClick={() => navigate('/pagos')} className="back-button">Volver</button>
+          <button onClick={() => navigate(`${API_URL}/pagos`)} className="back-button">Volver</button>
         </div>
       </div>
     );
@@ -172,7 +173,7 @@ export default function EditarPago() {
           </div>
           <button type="submit" className="submit-button">Guardar Cambios</button>
         </form>
-        <button onClick={() => navigate('/pagos')} className="back-button">
+        <button onClick={() => navigate(`${API_URL}/pagos`)} className="back-button">
           Cancelar
         </button>
       </div>

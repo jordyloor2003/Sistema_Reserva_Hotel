@@ -3,9 +3,8 @@ import axios from "axios";
 import { FileText, DollarSign, Search, RefreshCcw } from 'lucide-react';
 import './Reportes.css';
 
-const API_BASE_URL = "http://127.0.0.1:8000/api/reportes/";
-
 export default function Reportes() {
+  const API_URL = process.env.REACT_APP_API_URL;
   const [reportType, setReportType] = useState("reservas");
   const [reservaFilters, setReservaFilters] = useState({
     fecha_inicio: "",
@@ -45,10 +44,10 @@ export default function Reportes() {
       let params = {};
 
       if (reportType === 'reservas') {
-        endpoint = 'reservas/';
+        endpoint = `${API_URL}reservas`;
         params = reservaFilters;
       } else {
-        endpoint = 'ingresos/';
+        endpoint = `${API_URL}ingresos`;
         params = ingresosFilters;
       }
 

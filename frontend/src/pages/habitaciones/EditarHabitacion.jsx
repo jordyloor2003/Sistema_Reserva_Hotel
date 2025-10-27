@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import './EditarHabitacion.css';
 
 export default function EditarHabitacion() {
+  const API_URL = process.env.REACT_APP_API_URL;
   const { id } = useParams(); 
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -24,7 +25,7 @@ export default function EditarHabitacion() {
         return;
       }
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/habitaciones/${id}/`, {
+        const response = await axios.get(`${API_URL}/habitaciones/${id}/`, {
           headers: {
             'Authorization': `Token ${token}`
           }
@@ -60,14 +61,14 @@ export default function EditarHabitacion() {
     }
 
     try {
-      await axios.put(`http://127.0.0.1:8000/api/habitaciones/${id}/`, formData, {
+      await axios.put(`${API_URL}/habitaciones/${id}/`, formData, {
         headers: {
           'Authorization': `Token ${token}`
         }
       });
       setSuccess("Habitacion actualizada exitosamente.");
       setTimeout(() => {
-        navigate('/habitaciones');
+        navigate(`${API_URL}/habitaciones`);
       }, 1500);
     } catch (err) {
       console.error("Error al actualizar la habitacion:", err);
@@ -93,7 +94,7 @@ export default function EditarHabitacion() {
       <div className="editar-habitacion-container">
         <div className="error-card">
           <p className="error-text">{error}</p>
-          <button onClick={() => navigate('/habitaciones')} className="back-button">Volver</button>
+          <button onClick={() => navigate(`${API_URL}/habitaciones`)} className="back-button">Volver</button>
         </div>
       </div>
     );
@@ -147,7 +148,7 @@ export default function EditarHabitacion() {
           </div>
           <button type="submit" className="submit-button">Guardar Cambios</button>
         </form>
-        <button onClick={() => navigate('/habitaciones')} className="back-button">
+        <button onClick={() => navigate(`${API_URL}/habitaciones`)} className="back-button">
           Cancelar
         </button>
       </div>

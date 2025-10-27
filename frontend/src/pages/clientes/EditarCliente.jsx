@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import './Clientes.css';
 
 export default function EditarCliente() {
+  const API_URL = process.env.REACT_APP_API_URL;
   const { id } = useParams();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -25,7 +26,7 @@ export default function EditarCliente() {
         return;
       }
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/clientes/${id}/`, {
+        const response = await axios.get(`${API_URL}/clientes/${id}/`, {
           headers: {
             'Authorization': `Token ${token}`
           }
@@ -61,14 +62,14 @@ export default function EditarCliente() {
     }
 
     try {
-      await axios.put(`http://127.0.0.1:8000/api/clientes/${id}/`, formData, {
+      await axios.put(`${API_URL}/clientes/${id}/`, formData, {
         headers: {
           'Authorization': `Token ${token}`
         }
       });
       setSuccess("Cliente actualizado exitosamente.");
       setTimeout(() => {
-        navigate('/clientes');
+        navigate(`${API_URL}/clientes`);
       }, 1500);
     } catch (err) {
       console.error("Error al actualizar el cliente:", err);
@@ -94,7 +95,7 @@ export default function EditarCliente() {
       <div className="editar-cliente-container">
         <div className="error-card">
           <p className="error-text">{error}</p>
-          <button onClick={() => navigate('/clientes')} className="back-button">Volver</button>
+          <button onClick={() => navigate(`${API_URL}/clientes`)} className="back-button">Volver</button>
         </div>
       </div>
     );
@@ -155,7 +156,7 @@ export default function EditarCliente() {
           </div>
           <button type="submit" className="submit-button">Guardar Cambios</button>
         </form>
-        <button onClick={() => navigate('/clientes')} className="back-button">
+        <button onClick={() => navigate(`${API_URL}/clientes`)} className="back-button">
           Cancelar
         </button>
       </div>

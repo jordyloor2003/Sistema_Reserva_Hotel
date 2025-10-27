@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import './Clientes.css';
 
 export default function Clientes() {
+  const API_URL = process.env.REACT_APP_API_URL;
   const [clientes, setClientes] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -22,7 +23,7 @@ export default function Clientes() {
     }
 
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/clientes/?search=${query}`, {
+      const response = await axios.get(`${API_URL}/clientes/?search=${query}`, {
         headers: {
           'Authorization': `Token ${token}`
         }
@@ -46,11 +47,11 @@ export default function Clientes() {
   };
 
   const handleCreateCliente = () => {
-    navigate('/crear-cliente');
+    navigate(`${API_URL}/crear-cliente`);
   };
 
   const handleEditCliente = (id) => {
-    navigate(`/editar-cliente/${id}`);
+    navigate(`${API_URL}/editar-cliente/${id}`);
   };
 
   const handleDeleteCliente = async () => {
@@ -61,7 +62,7 @@ export default function Clientes() {
     }
 
     try {
-      await axios.delete(`http://127.0.0.1:8000/api/clientes/${clienteToDelete}/`, {
+      await axios.delete(`${API_URL}/clientes/${clienteToDelete}/`, {
         headers: {
           'Authorization': `Token ${token}`
         }
