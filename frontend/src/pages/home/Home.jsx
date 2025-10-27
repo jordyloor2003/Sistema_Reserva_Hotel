@@ -4,37 +4,37 @@ import { useNavigate } from "react-router-dom";
 import './Home.css';
 
 export default function Home() {
-  const API_URL = process.env.REACT_APP_API_URL;
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;;
   const navigate = useNavigate();
   const cards = [
     {
       icon: <FaHotel size={40} className="icon-blue" />,
       title: "Gestion de Habitaciones",
       description: "Administra y controla la disponibilidad de las habitaciones.",
-      route: `${API_URL}/habitaciones`
+      route: `${API_BASE_URL}/habitaciones`
     },
     {
       icon: <FaConciergeBell size={40} className="icon-green" />,
       title: "Reservas",
       description: "Gestiona las reservas y asegura la ocupacion optima.",
-      route: `${API_URL}/reservas`
+      route: `${API_BASE_URL}/reservas`
     },
     {
       icon: <FaUsers size={40} className="icon-purple" />,
       title: "Clientes",
       description: "Manten un registro completo de tus huespedes.",
-      route: `${API_URL}/clientes`
+      route: `${API_BASE_URL}/clientes`
     },
     {
       icon: <FaChartBar size={40} className="icon-orange" />,
       title: "Reportes",
       description: "Genera informes detallados de reservas e ingresos.",
-      route: `${API_URL}/reportes`
+      route: `${API_BASE_URL}/reportes`
     }
   ];
 
   const handleNavigateToPagos = () => {
-    navigate(`${API_URL}/pagos}`);
+    navigate(`${API_BASE_URL}/pagos}`);
   };
 
   return (

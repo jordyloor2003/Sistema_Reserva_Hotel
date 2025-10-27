@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import './Reservas.css';
 
 export default function Reservas() {
-  const API_URL = process.env.REACT_APP_API_URL;
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;;
   const [reservas, setReservas] = useState([]);
   const [habitaciones, setHabitaciones] = useState([]);
   const [clientes, setClientes] = useState([]);
@@ -34,7 +34,7 @@ export default function Reservas() {
     try {
       // Construir la URL de los filtros dinámicamente
       const params = new URLSearchParams(filtros).toString();
-      const response = await axios.get(`${API_URL}/reservas/?${params}`, {
+      const response = await axios.get(`${API_BASE_URL}/reservas/?${params}`, {
         headers: {
           'Authorization': `Token ${token}`
         }
@@ -55,12 +55,12 @@ export default function Reservas() {
     if (!token) return;
 
     try {
-      const clientesResponse = await axios.get(`${API_URL}/clientes/`, {
+      const clientesResponse = await axios.get(`${API_BASE_URL}/clientes/`, {
         headers: { 'Authorization': `Token ${token}` }
       });
       setClientes(clientesResponse.data);
 
-      const habitacionesResponse = await axios.get(`${API_URL}/habitaciones/`, {
+      const habitacionesResponse = await axios.get(`${API_BASE_URL}/habitaciones/`, {
         headers: { 'Authorization': `Token ${token}` }
       });
       setHabitaciones(habitacionesResponse.data);
@@ -75,11 +75,11 @@ export default function Reservas() {
   }, []);
 
   const handleCreateReserva = () => {
-    navigate(`${API_URL}/crear-reserva`);
+    navigate(`${API_BASE_URL}/crear-reserva`);
   };
 
   const handleEditReserva = (id) => {
-    navigate(`${API_URL}/editar-reserva/${id}`);
+    navigate(`${API_BASE_URL}/editar-reserva/${id}`);
   };
 
   const handleDeleteReserva = async () => {
@@ -90,7 +90,7 @@ export default function Reservas() {
     }
 
     try {
-      await axios.delete(`${API_URL}/reservas/${reservaToDelete}/`, {
+      await axios.delete(`${API_BASE_URL}/reservas/${reservaToDelete}/`, {
         headers: {
           'Authorization': `Token ${token}`
         }
@@ -117,7 +117,7 @@ export default function Reservas() {
     }
 
     try {
-      await axios.post(`${API_URL}/reservas/${id}/checkin/`, null, {
+      await axios.post(`${API_BASE_URL}/reservas/${id}/checkin/`, null, {
         headers: { 'Authorization': `Token ${token}` }
       });
       fetchReservas();
@@ -135,7 +135,7 @@ export default function Reservas() {
     }
 
     try {
-      await axios.post(`${API_URL}/reservas/${id}/checkout/`, null, {
+      await axios.post(`${API_BASE_URL}/reservas/${id}/checkout/`, null, {
         headers: { 'Authorization': `Token ${token}` }
       });
       fetchReservas();

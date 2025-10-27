@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import './Reservas.css'; 
 
 export default function CrearReserva() { 
-  const API_URL = process.env.REACT_APP_API_URL;
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;;
   const navigate = useNavigate(); 
   const [formData, setFormData] = useState({ 
     cliente: "", 
@@ -31,8 +31,8 @@ export default function CrearReserva() {
       } 
       try { 
         const [clientesResponse, habitacionesResponse] = await Promise.all([ 
-          axios.get(`${API_URL}/clientes/`, { headers: { 'Authorization': `Token ${token}` } }), 
-          axios.get(`${API_URL}/habitaciones/`, { headers: { 'Authorization': `Token ${token}` } }), 
+          axios.get(`${API_BASE_URL}/clientes/`, { headers: { 'Authorization': `Token ${token}` } }), 
+          axios.get(`${API_BASE_URL}/habitaciones/`, { headers: { 'Authorization': `Token ${token}` } }), 
         ]); 
         setClientes(clientesResponse.data); 
         setHabitaciones(habitacionesResponse.data);
@@ -75,7 +75,7 @@ export default function CrearReserva() {
     } 
 
     try { 
-      const response = await axios.post(`${API_URL}/reservas/`, formData, { 
+      const response = await axios.post(`${API_BASE_URL}/reservas/`, formData, { 
         headers: { 
           'Authorization': `Token ${token}` 
         } 
@@ -86,7 +86,7 @@ export default function CrearReserva() {
 
       //Redirigir a la página de pagos, pasando el ID de la nueva reserva 
       setTimeout(() => { 
-        navigate(`${API_URL}/crear-pago`, { state: { reservaId: newReservaId } }); 
+        navigate(`${API_BASE_URL}/crear-pago`, { state: { reservaId: newReservaId } }); 
       }, 1000); 
     } catch (err) { 
       console.error("Error al crear la reserva:", err.response ? err.response.data : err.message); 
@@ -170,7 +170,7 @@ export default function CrearReserva() {
           </div> 
           <button type="submit" className="submit-button">Crear Reserva</button> 
         </form> 
-        <button onClick={() => navigate(`${API_URL}/reservas`)} className="back-button"> 
+        <button onClick={() => navigate(`${API_BASE_URL}/reservas`)} className="back-button"> 
           Cancelar 
         </button> 
       </div> 

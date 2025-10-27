@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Register() {
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -18,7 +19,7 @@ function Register() {
     setSuccess('');
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/usuarios/', {
+      const response = await fetch(`${API_BASE_URL}/usuarios/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import './Clientes.css';
 
 export default function CrearCliente() {
-  const API_URL = process.env.REACT_APP_API_URL;
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;;
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     nombre: "",
@@ -35,14 +35,14 @@ export default function CrearCliente() {
     }
 
     try {
-      await axios.post(`${API_URL}/clientes/`, formData, {
+      await axios.post(`${API_BASE_URL}/clientes/`, formData, {
         headers: {
           'Authorization': `Token ${token}`
         }
       });
       setSuccess("Cliente creado exitosamente.");
       setTimeout(() => {
-        navigate(`${API_URL}/clientes}`);
+        navigate(`${API_BASE_URL}/clientes}`);
       }, 1500);
     } catch (err) {
       console.error("Error al crear el cliente:", err);
@@ -109,7 +109,7 @@ export default function CrearCliente() {
           </div>
           <button type="submit" className="submit-button">Crear Cliente</button>
         </form>
-        <button onClick={() => navigate(`${API_URL}/clientes`)} className="back-button">
+        <button onClick={() => navigate(`${API_BASE_URL}/clientes`)} className="back-button">
           Cancelar
         </button>
       </div>

@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import './Pagos.css';
 
 export default function Pagos() {
-  const API_URL = process.env.REACT_APP_API_URL;
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;;
   const navigate = useNavigate();
   const location = useLocation();
   const [pagos, setPagos] = useState([]);
@@ -32,10 +32,10 @@ export default function Pagos() {
       const query = new URLSearchParams(filtros).toString();
       // Usamos Promise.all para cargar pagos, clientes, habitaciones y reservas al mismo tiempo
       const [pagosRes, clientesRes, habitacionesRes, reservasRes] = await Promise.all([
-        axios.get(`${API_URL}/pagos/?${query}`, { headers: { 'Authorization': `Token ${token}` } }),
-        axios.get(`${API_URL}/clientes/`, { headers: { 'Authorization': `Token ${token}` } }),
-        axios.get(`${API_URL}/habitaciones/`, { headers: { 'Authorization': `Token ${token}` } }),
-        axios.get(`${API_URL}/reservas/`, { headers: { 'Authorization': `Token ${token}` } })
+        axios.get(`${API_BASE_URL}/pagos/?${query}`, { headers: { 'Authorization': `Token ${token}` } }),
+        axios.get(`${API_BASE_URL}/clientes/`, { headers: { 'Authorization': `Token ${token}` } }),
+        axios.get(`${API_BASE_URL}/habitaciones/`, { headers: { 'Authorization': `Token ${token}` } }),
+        axios.get(`${API_BASE_URL}/reservas/`, { headers: { 'Authorization': `Token ${token}` } })
       ]);
 
       // Mapear los datos de clientes, habitaciones y reservas a objetos para un acceso rápido
@@ -108,11 +108,11 @@ export default function Pagos() {
   };
 
   const handleCreatePago = () => {
-    navigate(`${API_URL}/crear-pago`);
+    navigate(`${API_BASE_URL}/crear-pago`);
   };
 
   const handleEditPago = (id) => {
-    navigate(`${API_URL}/editar-pago/${id}`);
+    navigate(`${API_BASE_URL}/editar-pago/${id}`);
   };
 
   const handleDeletePago = async () => {
@@ -123,7 +123,7 @@ export default function Pagos() {
     }
 
     try {
-      await axios.delete(`${API_URL}/pagos/${pagoToDelete}/`, {
+      await axios.delete(`${API_BASE_URL}/pagos/${pagoToDelete}/`, {
         headers: {
           'Authorization': `Token ${token}`
         }

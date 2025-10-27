@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Login({ onLogin }) {
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -12,7 +13,7 @@ function Login({ onLogin }) {
     setError('');
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api-token-auth/', {
+      const response = await fetch(`${API_BASE_URL}/api-token-auth/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),

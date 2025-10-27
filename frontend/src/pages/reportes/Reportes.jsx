@@ -4,7 +4,7 @@ import { FileText, DollarSign, Search, RefreshCcw } from 'lucide-react';
 import './Reportes.css';
 
 export default function Reportes() {
-  const API_URL = process.env.REACT_APP_API_URL;
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;;
   const [reportType, setReportType] = useState("reservas");
   const [reservaFilters, setReservaFilters] = useState({
     fecha_inicio: "",
@@ -44,10 +44,10 @@ export default function Reportes() {
       let params = {};
 
       if (reportType === 'reservas') {
-        endpoint = `${API_URL}reservas`;
+        endpoint = `${API_BASE_URL}reservas`;
         params = reservaFilters;
       } else {
-        endpoint = `${API_URL}ingresos`;
+        endpoint = `${API_BASE_URL}ingresos`;
         params = ingresosFilters;
       }
 

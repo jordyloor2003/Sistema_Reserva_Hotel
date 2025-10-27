@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import './CrearHabitacion.css';
 
 export default function CrearHabitacion() {
-  const API_URL = process.env.REACT_APP_API_URL;
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;;
   const [formData, setFormData] = useState({
     tipo: "",
     estado: "disponible",
@@ -34,7 +34,7 @@ export default function CrearHabitacion() {
     }
 
     try {
-      await axios.post(`${API_URL}/habitaciones/`, formData, {
+      await axios.post(`${API_BASE_URL}/habitaciones/`, formData, {
         headers: {
           'Authorization': `Token ${token}`
         }
@@ -42,7 +42,7 @@ export default function CrearHabitacion() {
       setSuccess("Habitacion creada exitosamente.");
       // Redirige al usuario a la lista de habitaciones después de un pequeño retraso
       setTimeout(() => {
-        navigate(`${API_URL}/habitaciones`);
+        navigate(`${API_BASE_URL}/habitaciones`);
       }, 1500);
     } catch (err) {
       console.error("Error al crear la habitacion:", err);
@@ -104,7 +104,7 @@ export default function CrearHabitacion() {
           </div>
           <button type="submit" className="submit-button">Crear Habitación</button>
         </form>
-        <button onClick={() => navigate(`${API_URL}/habitaciones`)} className="back-button">
+        <button onClick={() => navigate(`${API_BASE_URL}/habitaciones`)} className="back-button">
           Cancelar
         </button>
       </div>
