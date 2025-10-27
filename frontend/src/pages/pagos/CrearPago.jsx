@@ -132,7 +132,7 @@ export default function CrearPago() {
       });
       setSuccess("Pago creado exitosamente.");
       setTimeout(() => {
-        navigate(`${API_BASE_URL}/pagos`);
+        navigate('/pagos');
       }, 1500);
     } catch (err) {
       console.error("Error al crear el pago:", err.response ? err.response.data : err.message);
@@ -234,7 +234,7 @@ export default function CrearPago() {
           </div>
           <button type="submit" className="submit-button">Crear Pago</button>
         </form>
-        <button onClick={() => navigate(`${API_BASE_URL}/pagos`)} className="back-button">
+        <button onClick={() => navigate('/pagos')} className="back-button">
           Cancelar
         </button>
       </div>

@@ -48,8 +48,6 @@ export default function CrearReserva() {
 
   // Este useEffect filtra las habitaciones disponibles cada vez que cambia el estado de 'habitaciones'
   useEffect(() => {
-    // Asume que tu API de habitaciones tiene un campo 'disponible' (boolean) o 'estado' ('disponible', 'ocupada', etc.)
-    // Si tu API usa un campo diferente, simplemente ajusta la condición de filtro.
     const habitacionesFiltradas = habitaciones.filter(h => h.estado === 'disponible');
     setHabitacionesDisponibles(habitacionesFiltradas);
   }, [habitaciones]);
@@ -86,7 +84,7 @@ export default function CrearReserva() {
 
       //Redirigir a la página de pagos, pasando el ID de la nueva reserva 
       setTimeout(() => { 
-        navigate(`${API_BASE_URL}/crear-pago`, { state: { reservaId: newReservaId } }); 
+        navigate('/crear-pago', { state: { reservaId: newReservaId } }); 
       }, 1000); 
     } catch (err) { 
       console.error("Error al crear la reserva:", err.response ? err.response.data : err.message); 
@@ -170,7 +168,7 @@ export default function CrearReserva() {
           </div> 
           <button type="submit" className="submit-button">Crear Reserva</button> 
         </form> 
-        <button onClick={() => navigate(`${API_BASE_URL}/reservas`)} className="back-button"> 
+        <button onClick={() => navigate('/reservas')} className="back-button"> 
           Cancelar 
         </button> 
       </div> 

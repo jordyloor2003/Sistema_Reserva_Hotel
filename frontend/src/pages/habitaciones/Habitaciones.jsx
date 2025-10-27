@@ -82,11 +82,11 @@ export default function Habitaciones() {
   }, []);
 
   const handleCreateRoom = () => {
-    navigate(`${API_BASE_URL}/crear-habitacion`);
+    navigate('/crear-habitacion');
   };
 
   const handleEditRoom = (id) => {
-    navigate(`${API_BASE_URL}/editar-habitacion/${id}`);
+    navigate(`/editar-habitacion/${id}`);
   };
 
   const handleDeleteRoom = async () => {

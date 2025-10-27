@@ -34,7 +34,7 @@ export default function Home() {
   ];
 
   const handleNavigateToPagos = () => {
-    navigate(`${API_BASE_URL}/pagos}`);
+    navigate('/pagos}');
   };
 
   return (

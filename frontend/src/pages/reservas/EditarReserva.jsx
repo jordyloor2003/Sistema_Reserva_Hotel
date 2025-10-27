@@ -82,7 +82,7 @@ export default function EditarReserva() {
       });
       setSuccess("Reserva actualizada exitosamente.");
       setTimeout(() => {
-        navigate(`${API_BASE_URL}/reservas`);
+        navigate('/reservas');
       }, 1500);
     } catch (err) {
       console.error("Error al actualizar la reserva:", err.response ? err.response.data : err.message);
@@ -108,7 +108,7 @@ export default function EditarReserva() {
       <div className="editar-reserva-container">
         <div className="error-card">
           <p className="error-text">{error}</p>
-          <button onClick={() => navigate(`${API_BASE_URL}/reservas`)} className="back-button">Volver</button>
+          <button onClick={() => navigate('/reservas')} className="back-button">Volver</button>
         </div>
       </div>
     );
@@ -192,7 +192,7 @@ export default function EditarReserva() {
           </div>
           <button type="submit" className="submit-button">Guardar Cambios</button>
         </form>
-        <button onClick={() => navigate(`${API_BASE_URL}/reservas`)} className="back-button">
+        <button onClick={() => navigate('/reservas')} className="back-button">
           Cancelar
         </button>
       </div>

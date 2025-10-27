@@ -68,7 +68,7 @@ export default function EditarHabitacion() {
       });
       setSuccess("Habitacion actualizada exitosamente.");
       setTimeout(() => {
-        navigate(`${API_BASE_URL}/habitaciones`);
+        navigate('/habitaciones');
       }, 1500);
     } catch (err) {
       console.error("Error al actualizar la habitacion:", err);
@@ -94,7 +94,7 @@ export default function EditarHabitacion() {
       <div className="editar-habitacion-container">
         <div className="error-card">
           <p className="error-text">{error}</p>
-          <button onClick={() => navigate(`${API_BASE_URL}/habitaciones`)} className="back-button">Volver</button>
+          <button onClick={() => navigate('/habitaciones')} className="back-button">Volver</button>
         </div>
       </div>
     );
@@ -148,7 +148,7 @@ export default function EditarHabitacion() {
           </div>
           <button type="submit" className="submit-button">Guardar Cambios</button>
         </form>
-        <button onClick={() => navigate(`${API_BASE_URL}/habitaciones`)} className="back-button">
+        <button onClick={() => navigate('/habitaciones')} className="back-button">
           Cancelar
         </button>
       </div>

@@ -42,7 +42,7 @@ export default function CrearCliente() {
       });
       setSuccess("Cliente creado exitosamente.");
       setTimeout(() => {
-        navigate(`${API_BASE_URL}/clientes}`);
+        navigate('/clientes}');
       }, 1500);
     } catch (err) {
       console.error("Error al crear el cliente:", err);
@@ -109,7 +109,7 @@ export default function CrearCliente() {
           </div>
           <button type="submit" className="submit-button">Crear Cliente</button>
         </form>
-        <button onClick={() => navigate(`${API_BASE_URL}/clientes`)} className="back-button">
+        <button onClick={() => navigate('/clientes')} className="back-button">
           Cancelar
         </button>
       </div>

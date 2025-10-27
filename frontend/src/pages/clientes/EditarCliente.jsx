@@ -69,7 +69,7 @@ export default function EditarCliente() {
       });
       setSuccess("Cliente actualizado exitosamente.");
       setTimeout(() => {
-        navigate(`${API_BASE_URL}/clientes`);
+        navigate('/clientes');
       }, 1500);
     } catch (err) {
       console.error("Error al actualizar el cliente:", err);
@@ -95,7 +95,7 @@ export default function EditarCliente() {
       <div className="editar-cliente-container">
         <div className="error-card">
           <p className="error-text">{error}</p>
-          <button onClick={() => navigate(`${API_BASE_URL}/clientes`)} className="back-button">Volver</button>
+          <button onClick={() => navigate('/clientes')} className="back-button">Volver</button>
         </div>
       </div>
     );
@@ -156,7 +156,7 @@ export default function EditarCliente() {
           </div>
           <button type="submit" className="submit-button">Guardar Cambios</button>
         </form>
-        <button onClick={() => navigate(`${API_BASE_URL}/clientes`)} className="back-button">
+        <button onClick={() => navigate('/clientes')} className="back-button">
           Cancelar
         </button>
       </div>

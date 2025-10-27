@@ -42,7 +42,7 @@ export default function CrearHabitacion() {
       setSuccess("Habitacion creada exitosamente.");
       // Redirige al usuario a la lista de habitaciones después de un pequeño retraso
       setTimeout(() => {
-        navigate(`${API_BASE_URL}/habitaciones`);
+        navigate('/habitaciones');
       }, 1500);
     } catch (err) {
       console.error("Error al crear la habitacion:", err);
@@ -104,7 +104,7 @@ export default function CrearHabitacion() {
           </div>
           <button type="submit" className="submit-button">Crear Habitación</button>
         </form>
-        <button onClick={() => navigate(`${API_BASE_URL}/habitaciones`)} className="back-button">
+        <button onClick={() => navigate('/habitaciones')} className="back-button">
           Cancelar
         </button>
       </div>

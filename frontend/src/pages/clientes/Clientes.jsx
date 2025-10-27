@@ -47,11 +47,11 @@ export default function Clientes() {
   };
 
   const handleCreateCliente = () => {
-    navigate(`${API_BASE_URL}/crear-cliente`);
+    navigate('/crear-cliente');
   };
 
   const handleEditCliente = (id) => {
-    navigate(`${API_BASE_URL}/editar-cliente/${id}`);
+    navigate(`/editar-cliente/${id}`);
   };
 
   const handleDeleteCliente = async () => {

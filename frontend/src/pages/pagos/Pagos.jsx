@@ -108,11 +108,11 @@ export default function Pagos() {
   };
 
   const handleCreatePago = () => {
-    navigate(`${API_BASE_URL}/crear-pago`);
+    navigate('/crear-pago');
   };
 
   const handleEditPago = (id) => {
-    navigate(`${API_BASE_URL}/editar-pago/${id}`);
+    navigate('/editar-pago/${id}');
   };
 
   const handleDeletePago = async () => {

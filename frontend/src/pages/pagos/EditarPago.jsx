@@ -77,7 +77,7 @@ export default function EditarPago() {
       });
       setSuccess("Pago actualizado exitosamente.");
       setTimeout(() => {
-        navigate(`${API_BASE_URL}/pagos`);
+        navigate('/pagos');
       }, 1500);
     } catch (err) {
       console.error("Error al actualizar el pago:", err.response ? err.response.data : err.message);
@@ -103,7 +103,7 @@ export default function EditarPago() {
       <div className="editar-pago-container">
         <div className="error-card">
           <p className="error-text">{error}</p>
-          <button onClick={() => navigate(`${API_BASE_URL}/pagos`)} className="back-button">Volver</button>
+          <button onClick={() => navigate('/pagos')} className="back-button">Volver</button>
         </div>
       </div>
     );
@@ -173,7 +173,7 @@ export default function EditarPago() {
           </div>
           <button type="submit" className="submit-button">Guardar Cambios</button>
         </form>
-        <button onClick={() => navigate(`${API_BASE_URL}/pagos`)} className="back-button">
+        <button onClick={() => navigate('/pagos')} className="back-button">
           Cancelar
         </button>
       </div>

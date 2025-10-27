@@ -75,11 +75,11 @@ export default function Reservas() {
   }, []);
 
   const handleCreateReserva = () => {
-    navigate(`${API_BASE_URL}/crear-reserva`);
+    navigate('/crear-reserva');
   };
 
   const handleEditReserva = (id) => {
-    navigate(`${API_BASE_URL}/editar-reserva/${id}`);
+    navigate(`/editar-reserva/${id}`);
   };
 
   const handleDeleteReserva = async () => {
