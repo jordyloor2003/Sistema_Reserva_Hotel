@@ -11,25 +11,25 @@ export default function Home() {
       icon: <FaHotel size={40} className="icon-blue" />,
       title: "Gestion de Habitaciones",
       description: "Administra y controla la disponibilidad de las habitaciones.",
-      route: `${API_BASE_URL}/habitaciones`
+      route: '/habitaciones'
     },
     {
       icon: <FaConciergeBell size={40} className="icon-green" />,
       title: "Reservas",
       description: "Gestiona las reservas y asegura la ocupacion optima.",
-      route: `${API_BASE_URL}/reservas`
+      route: '/reservas'
     },
     {
       icon: <FaUsers size={40} className="icon-purple" />,
       title: "Clientes",
       description: "Manten un registro completo de tus huespedes.",
-      route: `${API_BASE_URL}/clientes`
+      route: '/clientes'
     },
     {
       icon: <FaChartBar size={40} className="icon-orange" />,
       title: "Reportes",
       description: "Genera informes detallados de reservas e ingresos.",
-      route: `${API_BASE_URL}/reportes`
+      route: '/reportes'
     }
   ];
 
