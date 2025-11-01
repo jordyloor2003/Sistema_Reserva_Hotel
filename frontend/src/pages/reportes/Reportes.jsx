@@ -51,7 +51,7 @@ export default function Reportes() {
         params = ingresosFilters;
       }
 
-      const response = await axios.get(`${API_BASE_URL}${endpoint}`, {
+      const response = await axios.get(`${endpoint}`, {
         params: params,
         headers: { 'Authorization': `Token ${token}` },
       });
