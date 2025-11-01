@@ -112,7 +112,7 @@ export default function Pagos() {
   };
 
   const handleEditPago = (id) => {
-    navigate('/editar-pago/${id}');
+    navigate(`/editar-pago/${id}`);
   };
 
   const handleDeletePago = async () => {
