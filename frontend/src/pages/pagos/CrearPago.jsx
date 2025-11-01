@@ -125,11 +125,15 @@ export default function CrearPago() {
     }
 
     try {
-      await axios.post(`${API_BASE_URL}/pagos/`, formData, {
+      await axios.post(`${API_BASE_URL}/pagos/`, {
+        ...formData,
+        reserva_id: formData.reserva,
+      }, {
         headers: {
           'Authorization': `Token ${token}`
         }
       });
+
       setSuccess("Pago creado exitosamente.");
       setTimeout(() => {
         navigate('/pagos');
