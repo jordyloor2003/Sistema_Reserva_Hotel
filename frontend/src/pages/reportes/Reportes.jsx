@@ -44,10 +44,10 @@ export default function Reportes() {
       let params = {};
 
       if (reportType === 'reservas') {
-        endpoint = `${API_BASE_URL}reservas`;
+        endpoint = `${API_BASE_URL}/reservas`;
         params = reservaFilters;
       } else {
-        endpoint = `${API_BASE_URL}ingresos`;
+        endpoint = `${API_BASE_URL}/ingresos`;
         params = ingresosFilters;
       }
 
