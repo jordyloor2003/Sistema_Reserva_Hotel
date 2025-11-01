@@ -34,7 +34,7 @@ export default function Home() {
   ];
 
   const handleNavigateToPagos = () => {
-    navigate('/pagos}');
+    navigate('/pagos');
   };
 
   return (
