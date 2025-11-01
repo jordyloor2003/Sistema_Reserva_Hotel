@@ -136,8 +136,8 @@ export default function Reportes() {
                 {reportData.length > 0 ? (
                   reportData.map((reserva, index) => (
                     <tr key={index}>
-                      <td>{reserva.cliente__nombre}</td>
-                      <td>{reserva.habitacion__tipo}</td>
+                      <td>{reserva.cliente_nombre}</td>
+                      <td>{reserva.habitacion_tipo}</td>
                       <td>{reserva.fecha_inicio}</td>
                       <td>{reserva.fecha_fin}</td>
                       <td>
