@@ -78,7 +78,6 @@ export default function CrearReserva() {
           'Authorization': `Token ${token}` 
         } 
       }); 
-
       const newReservaId = response.data.id; 
       setSuccess("Reserva creada exitosamente."); 
 
@@ -89,6 +88,8 @@ export default function CrearReserva() {
     } catch (err) { 
       console.error("Error al crear la reserva:", err.response ? err.response.data : err.message); 
       if (err.response && err.response.data) { 
+        console.log(err.response.status);
+        console.log(err.response.data);
         setError("Error: " + JSON.stringify(err.response.data)); 
       } else { 
         setError("Error al crear la reserva. Verifique los datos."); 
